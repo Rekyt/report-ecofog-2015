@@ -1,0 +1,65 @@
+\documentclass[a4paper, 12pt]{article}
+
+%% Specify margins
+\usepackage[margin=2cm]{geometry}
+
+%% Use specific system Font, here Times New Roman
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+%% Extension of amsmaths with some nice alignments functions for equations
+\usepackage{mathtools}
+
+%% ** Colors **
+\usepackage{color} 
+% xcolor is used to have two colors in table rows
+\usepackage[table]{xcolor}
+% blue for links
+\definecolor{linkcol}{RGB}{0,0,238}
+% gray for cell background
+\definecolor{lightgray}{gray}{0.8}
+
+%% Add hyperlinks to figures and refs without borders
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks,
+    baseurl       = http://,
+    colorlinks    = true,
+    linkcolor     = linkcol,
+    citecolor     = linkcol,
+    pdfborder     = 0 0 0
+}
+
+%% Bibliography
+\usepackage{natbib}
+
+%% Get label of figures bold
+\usepackage[labelfont=bf]{caption}
+
+% Write units properly with
+% Units functions see siunitx specs
+\usepackage{siunitx}
+
+\begin{document}
+\renewcommand{\arraystretch}{1.5}
+
+%TC:ignore
+\input{0-Summary.tex}
+%TC:endignore
+\input{1-Introduction.tex}
+
+\input{2-MaterialsAndMethods.tex}
+
+\input{3-Results.tex}
+
+\input{4-Discussion.tex}
+
+%TC:ignore
+\input{5-AuthorsContributions.tex}
+%TC:endignore
+
+\input{6-References.tex}
+\bibliographystyle{cell.bst}
+\bibliography{Bibliography}
+
+\end{document}

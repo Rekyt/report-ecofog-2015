@@ -1,5 +1,6 @@
-# report-template
-Simple LaTeX report template for internships
+# report-ecofog-2015
+
+Report for Master's Internship from Feb. 2015 to June 2015 in [EcoFoG](http://www.ecofog.gf/)
 
 ## Structure
 
@@ -23,7 +24,7 @@ This template uses various packages:
 - `caption` to have bold labels for figures
 - `siunitx` to handle SI units properly
 
-This template also include [TexCount|https://github.com/EinarAndreas/TeXcount], a tool to count words in LaTeX documents, this tool is from Einar Andreas, I didn't make it.
+This template also include [TexCount](https://github.com/EinarAndreas/TeXcount), a tool to count words in LaTeX documents, this tool is from Einar Andreas, I didn't make it.
 
 ## Possible improvements
 

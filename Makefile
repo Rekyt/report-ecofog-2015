@@ -4,7 +4,7 @@
 
 all: reporttemplate.pdf
 
-reporttemplate.pdf: reporttemplate.tex Figures/*
+reporttemplate.pdf: reporttemplate.tex
 	@xelatex $<
 	@bibtex $(patsubst %.tex, %.aux, $<)
 	@xelatex $<

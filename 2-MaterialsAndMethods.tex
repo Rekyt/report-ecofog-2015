@@ -4,25 +4,53 @@
 \subsection*{Data Provenance}
 
 \subsubsection*{Growth Data}
-The nine plots used through this article,
-Guyafor network, plots,
-French Guiana, map. Several sites
-Longitudinal data.
+The first data set is an inventory of all trees over 10cm in Diameter at Breast Height (DBH), i.e. measured at 1.3m high, in nine 1-ha plots in French Guiana (see map \missfig). In each plot, trees diameter were measured every two or five years depending on the plot.
 
-Followed over tens of years. Diameters were measured at breast height (~1.3m), during the following period we had Diameter at Breast Height (DBH) values for each tree.
+We selected a common measured period between 2001 and 2013 comprising a total of 3549 trees; we estimated annual growth rate (AGR) in diameter by fitting a linear regression of DBH over years. The slope of the regression gave us an "average" AGR for each followed tree on the comprised 
 
-Due to various inconsistency of followed year. Choose a common time period between plots. To estimate Annual Growth Rate (AGR), we regressed DBH over years, taking the slope of the regression as the AGR.
 
 \subsubsection*{Trait Data}
 
-Bridge database, traits measured in Baraloto, \citep{baraloto_functional_2010, baraloto_decoupled_2010}. Selected traits from wood and leaf spectrum economics.
+The second data set comes was a collection of five functional traits (see~\autoref{tab:seltraits}) extracted from a bigger database \citep{baraloto_functional_2010, baraloto_decoupled_2010} on the same trees. Traits were not followed through time and measured only once. Selected traits are related to leaf and wood economics spectrum.
+
 
 \subsection*{Growth model}
 
-Linear mixed-model explaining annual growth rate. With plot and species random effect.
+To predict the growth of tree from a single trait we used a linear mixed-model with the general formula:
+\begin{equation}
+	\label{eq:growth_mod}
+	\log(\text{AGR}_{i, s, p} + 1) = \theta_0 + \gamma_{0, s} + \gamma_p
+		+ (\theta_1 + \gamma_{1, s}) \times \text{DBH}
+		+ (\theta_2 + \gamma_{2, s}) \times \log(\text{DBH})
+		+ \delta
+		+ \epsilon_i,
+\end{equation}
+with $\epsilon_i \sim \mathcal{N}(0, \theta_3)$ the individual residual,
+where $\text{AGR}_{i, s, p}$ is the AGR of tree $i$ of species $s$ in plot $p$; $\theta_0 \ldots \theta_3$ are parameters to be estimated; $\gamma_{0, s} \ldots \gamma_{2, s}$ and $\gamma_p$ follow a centered Gaussian distribution with unknown variances $\sigma^2_{0, s} \ldots \sigma^2_{2, s}$ and $\sigma^2_p$; $\text{Tr}_s$ is the average trait value for species $s$.
 
-Extracted residuals from above model.
+To understand how the distance to species average value affected the predicted growth, we used different $\delta$ values: $\theta_4 \times \text{Tr}_s$ the species average value, with a parameter $\theta_4$; $\theta_4 \times \text{Tr}_s + \theta_5 \times(\text{Tr}_i - \text{Tr}_s)$ the distance of individual trait value $\text{Tr}_i$ to species average, with the species term $\text{Tr}_s$; or $\theta_4 \times \text{Tr}_s + \theta_5' \times \vert \text{Tr}_i - \text{Tr}_s \vert$ the absolute distance to species average trait, with the species term $\text{Tr}_s$; or $\theta_4' \times \text{Tr}_i$ the individual trait value.
+
+Our models tested the difference of prediction between using only the species average trait value to predict growth and the same term plus an individual distance term (real or absolute) vs. the individual trait value.
 
 \subsection*{Data analysis}
 
-All data analyses were made using \citet{R_language}, plots were made with \citet{ggplot2_pkg}. We fit mixed-models with "lme4" R package \citep{lme4_pkg} and computed adapted R-squared for mixed-models \citep{nakagawa_general_2013} implemented in "MuMIn" R package \citep{mumin_pkg}.
+All data analyses were made using \citet{R_language} version 3.2.0 (2015-04-16), plots were made with \citet{ggplot2_pkg}. We fit mixed-models with "lme4" R package \citep{lme4_pkg} 1.1-7 and computed adapted R-squared for mixed-models \citep{nakagawa_general_2013} implemented in "MuMIn" R package \citep{mumin_pkg} version 1.13.4.
+
+\begin{table}
+	\begin{center}
+		\rowcolors{1}{white}{lightgray}
+		\begin{tabular}{lcc}
+		\hline \hline
+		Trait Name & Units & Role \\
+		\hline
+		Trunk bark thickness & mm & Defence, Stem economics spectrum \\
+		Xylem density (wood density) & $\text{g}.\text{cm}^{-3}$ & Stem economics \\
+		Specific Leaf Area (SLA) & $\text{cm}^2.\text{g}^{-1}$ & Leaf economics \\
+		Laminar total chlorophyll & $\text{µm}.\text{mm}^{-2}$  & Leaf economics \\
+		Laminar toughness & N & Leaf economics \\
+		\hline \hline
+		\end{tabular}
+		\caption{Selected functional traits.}
+		\label{tab:seltraits}
+	\end{center}
+\end{table}

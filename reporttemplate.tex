@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt, twocolumn]{article}
+\documentclass[a4paper, 12pt]{article}
 
 %% Specify margins
 \usepackage[margin=2cm]{geometry}
@@ -14,6 +14,7 @@
 \usepackage{color} 
 % xcolor is used to have two colors in table rows
 \usepackage[table]{xcolor}
+% Add this before tabular environment: \rowcolors{1}{white}{lightgray} 
 % blue for links
 \definecolor{linkcol}{RGB}{0,0,238}
 % gray for cell background
@@ -39,6 +40,15 @@
 % Write units properly with
 % Units functions see siunitx specs
 \usepackage{siunitx}
+
+%% Add [citation needed] command using \cite{NEEDED}
+\usepackage{ifthen} %add if then else command
+\let\oldcite=\cite %change current \cite function to \oldcite
+% Make a new \cite function
+\renewcommand\cite[1]{\ifthenelse{\equal{#1}{NEEDED}}{\textbf{[citation~needed]}}{\oldcite{#1}}}
+
+%% Add [missing figure] command with \ref{missfig}
+\newcommand{\missfig}[1]{\textbf{[missing figure]}}
 
 \begin{document}
 \renewcommand{\arraystretch}{1.5}

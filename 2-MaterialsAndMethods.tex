@@ -11,7 +11,11 @@ We selected a common measured period between 2001 and 2013 comprising a total of
 
 \subsubsection*{Trait Data}
 
-The second data set comes was a collection of five functional traits (see~\autoref{tab:seltraits}) extracted from a bigger database \citep{baraloto_functional_2010, baraloto_decoupled_2010} on the same trees. Traits were not followed through time and measured only once. Selected traits are related to leaf and wood economics spectrum.
+The second data set comes was a collection of five functional traits (see~\autoref{tab:seltraits}) extracted from a bigger database \citep{baraloto_decoupled_2010} on the same trees. Traits were not followed through time and measured only once. Selected traits are related to leaf and wood economics spectrum\citep{westoby_leaf-height-seed_1998, baraloto_decoupled_2010}.
+
+\textbf{Leaf economics spectrum.} Specific Leaf Area (SLA) is the photo-sensitive area per unit of dry mass of the leaf; high SLA underlines investment on high light-capturing leaves that have a short payback time per gram of dry matter invested; while low SLA reflects strategies with less light-capturing leaves and longer payback time that may appear competitive in some conditions. Total leaf chlorophyll content reflects the global strategy of the plant of having resource-expansive leaves with high payback or resource-cheap leaves with lower payback. Laminar toughness measures the resistance of a leaf to pinching, high toughness values correlates with low herbivory rate, it correlates with defense strategy.
+
+\textbf{Stem economics spectrum.} Wood density underlines different ecological strategy for trees, a low wood density makes wood less stable and less better protected against herbivory but cheap volumetric construction cost because of low resource requirements; while a high wood density makes the tree more stable but with higher construction cost, meaning a lower growth. Trunk bark thickness associate with defense strategies in neotropical forests, thicker bark provides higher resistance to pathogens and herbivores~\cite{NEEDED}.
 
 
 \subsection*{Growth model}
@@ -43,14 +47,14 @@ All data analyses were made using \citet{R_language} version 3.2.0 (2015-04-16),
 		\hline \hline
 		Trait Name & Units & Role \\
 		\hline
-		Trunk bark thickness & mm & Defence, Stem economics spectrum \\
+		Trunk bark thickness & mm & Stem economics \\
 		Xylem density (wood density) & $\text{g}.\text{cm}^{-3}$ & Stem economics \\
 		Specific Leaf Area (SLA) & $\text{cm}^2.\text{g}^{-1}$ & Leaf economics \\
 		Laminar total chlorophyll & $\text{µm}.\text{mm}^{-2}$  & Leaf economics \\
 		Laminar toughness & N & Leaf economics \\
 		\hline \hline
 		\end{tabular}
-		\caption{Selected functional traits.}
+		\caption{\textbf{Selected functional traits.} Stem and Leaf Economics Spectrum are defined as in~\citep{baraloto_decoupled_2010}, the two axes unravel distinct ecological strategies (see~\nameref{sec:M&M} for more details)} 
 		\label{tab:seltraits}
 	\end{center}
 \end{table}

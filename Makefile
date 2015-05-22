@@ -11,7 +11,7 @@ reporttemplate.pdf: reporttemplate.tex
 	@xelatex $<
 	@xelatex $<
 
-reporttemplate.tex: 0-Summary.tex 1-Introduction.tex 2-MaterialsAndMethods.tex 3-Results.tex 4-Discussion.tex 5-AuthorsContributions.tex 6-References.tex
+reporttemplate.tex: 0-Summary.tex 1-Introduction.tex 2-MaterialsAndMethods.tex 3-Results.tex 4-Discussion.tex 5-AuthorsContributions.tex 6-References.tex ./figures
 	@touch $@
 
 # Counts the number of words not including equations, depending on template structure

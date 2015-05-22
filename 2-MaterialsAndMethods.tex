@@ -6,7 +6,7 @@
 \subsubsection*{Growth Data}
 The first data set is an inventory of all trees over 10cm in Diameter at Breast Height (DBH), i.e. measured at 1.3m high, in nine 1-ha plots in French Guiana (see map \missfig). In each plot, trees diameter were measured every two or five years depending on the plot.
 
-We selected a common measured period between 2001 and 2013 comprising a total of 3549 trees; we estimated annual growth rate (AGR) in diameter by fitting a linear regression of DBH over years. The slope of the regression gave us an "average" AGR for each followed tree on the comprised 
+We selected a common measured period between 2001 and 2013 comprising a total of 3549 trees; we estimated annual growth rate (AGR) in diameter by fitting a linear regression of DBH over years. The slope of the regression gave us an average AGR for each followed tree on the comprised 
 
 
 \subsubsection*{Trait Data}
@@ -17,6 +17,13 @@ The second data set comes was a collection of five functional traits (see~\autor
 
 \textbf{Stem economics spectrum.} Wood density underlines different ecological strategy for trees, a low wood density makes wood less stable and less better protected against herbivory but cheap volumetric construction cost because of low resource requirements; while a high wood density makes the tree more stable but with higher construction cost, meaning a lower growth. Trunk bark thickness associate with defense strategies in neotropical forests, thicker bark provides higher resistance to pathogens and herbivores~\cite{NEEDED}.
 
+\subsection*{Analysis of Variance}
+Variance partitioning was done using a one-way Analysis of Variance, we explained either individual traits by a species effect and an individual term error, as follows:
+\begin{equation}
+	\label{eq:anova}
+	\text{Tr}_{i,s} = \mu_s + \epsilon_i,
+\end{equation}
+with $\text{Tr}_{i,s}$, the trait of individual $i$ of species $s$; $\mu_s$ the mean trait of species $s$; $\epsilon_i$ the individual error term with a Gaussian distribution. The explained variance by the species effect can then be expressed by the proportion of group sum of squares over the total sum of squares. We considered the residual sum of squares as being the individual variance. We partitioned the variance similarly for AGR.
 
 \subsection*{Growth model}
 
@@ -38,7 +45,7 @@ Our models tested the difference of prediction between using only the species av
 
 \subsection*{Data analysis}
 
-All data analyses were made using \citet{R_language} version 3.2.0 (2015-04-16), plots were made with \citet{ggplot2_pkg}. We fit mixed-models with "lme4" R package \citep{lme4_pkg} 1.1-7 and computed adapted R-squared for mixed-models \citep{nakagawa_general_2013} implemented in "MuMIn" R package \citep{mumin_pkg} version 1.13.4.
+All data analyses were made using \texttt{R} \citep{R_language} version 3.2.0 (2015-04-16), plots were made with \texttt{ggplot2} \citep{ggplot2_pkg}. We fit mixed-models with \texttt{lme4} \texttt{R} package \citep{lme4_pkg} 1.1-7 and computed adapted R-squared for mixed-models \citep{nakagawa_general_2013} implemented in \texttt{MuMIn} \texttt{R} package \citep{mumin_pkg} version 1.13.4.
 
 \begin{table}
 	\begin{center}

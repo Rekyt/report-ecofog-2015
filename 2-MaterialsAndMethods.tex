@@ -13,9 +13,9 @@ We selected a common measured period between 2001 and 2013 comprising a total of
 
 The second data set comes was a collection of five functional traits (see~\autoref{tab:seltraits}) extracted from a bigger database \citep{baraloto_decoupled_2010} on the same trees. Traits were not followed through time and measured only once. Selected traits are related to leaf and wood economics spectrum\citep{westoby_leaf-height-seed_1998, baraloto_decoupled_2010}.
 
-\textbf{Leaf economics spectrum.} Specific Leaf Area (SLA) is the photo-sensitive area per unit of dry mass of the leaf; high SLA underlines investment on high light-capturing leaves that have a short payback time per gram of dry matter invested; while low SLA reflects strategies with less light-capturing leaves and longer payback time that may appear competitive in some conditions. Total leaf chlorophyll content reflects the global strategy of the plant of having resource-expansive leaves with high payback or resource-cheap leaves with lower payback. Laminar toughness measures the resistance of a leaf to pinching, high toughness values correlates with low herbivory rate, it correlates with defense strategy.
+\textbf{Leaf economics spectrum.} Specific Leaf Area (SLA) is the photo-sensitive area per unit of dry mass of the leaf; high SLA underlines investment on high light-capturing leaves that have a short payback time per gram of dry matter invested; while low SLA reflects strategies with less light-capturing leaves and longer payback time that may appear competitive in some conditions. Total leaf chlorophyll content reflects the global strategy of the plant of having resource-expansive leaves with high payback or resource-cheap leaves with lower payback. Laminar toughness measures the resistance of a leaf to pinching, high toughness values correlates with low herbivory rate, it correlates with defense strategy~\citep{westoby_leaf-height-seed_1998}.
 
-\textbf{Stem economics spectrum.} Wood density underlines different ecological strategy for trees, a low wood density makes wood less stable and less better protected against herbivory but cheap volumetric construction cost because of low resource requirements; while a high wood density makes the tree more stable but with higher construction cost, meaning a lower growth. Trunk bark thickness associate with defense strategies in neotropical forests, thicker bark provides higher resistance to pathogens and herbivores~\cite{NEEDED}.
+\textbf{Stem economics spectrum.} Wood density underlines different ecological strategy for trees, a low wood density makes wood less stable and less better protected against herbivory but cheap volumetric construction cost because of low resource requirements; while a high wood density makes the tree more stable but with higher construction cost, meaning a lower growth. Trunk bark thickness associate with defense strategies in neotropical forests, thicker bark provides higher resistance to pathogens and herbivores~\citep{paine_functional_2010}.
 
 \subsection*{Analysis of Variance}
 Variance partitioning was done using a one-way Analysis of Variance, we explained either individual traits by a species effect and an individual term error, as follows:
@@ -37,9 +37,22 @@ To predict the growth of tree from a single trait we used a linear mixed-model w
 		+ \epsilon_i,
 \end{equation}
 with $\epsilon_i \sim \mathcal{N}(0, \theta_3)$ the individual residual,
-where $\text{AGR}_{i, s, p}$ is the AGR of tree $i$ of species $s$ in plot $p$; $\theta_0 \ldots \theta_3$ are parameters to be estimated; $\gamma_{0, s} \ldots \gamma_{2, s}$ and $\gamma_p$ follow a centered Gaussian distribution with unknown variances $\sigma^2_{0, s} \ldots \sigma^2_{2, s}$ and $\sigma^2_p$; $\text{Tr}_s$ is the average trait value for species $s$.
+where $\text{AGR}_{i, s, p}$ is the AGR of tree $i$ of species $s$ in plot $p$; $\theta_0 \ldots \theta_3$ are parameters to be estimated; $\gamma_{0, s} \ldots \gamma_{2, s}$ and $\gamma_p$ follow a centered Gaussian distribution with unknown variances $\sigma^2_{0, s} \ldots \sigma^2_{2, s}$ and $\sigma^2_p$. $\text{Tr}_s$ is the average trait value for species $s$.
 
-To understand how the distance to species average value affected the predicted growth, we used different $\delta$ values: $\theta_4 \times \text{Tr}_s$ the species average value, with a parameter $\theta_4$; $\theta_4 \times \text{Tr}_s + \theta_5 \times(\text{Tr}_i - \text{Tr}_s)$ the distance of individual trait value $\text{Tr}_i$ to species average, with the species term $\text{Tr}_s$; or $\theta_4 \times \text{Tr}_s + \theta_5' \times \vert \text{Tr}_i - \text{Tr}_s \vert$ the absolute distance to species average trait, with the species term $\text{Tr}_s$; or $\theta_4' \times \text{Tr}_i$ the individual trait value.
+To understand how the distance to species average value affected the predicted growth, we used different $\delta$ values:
+\begin{equation}
+	\label{eq:delta}
+	\delta = \left\{
+	\begin{aligned}
+	\theta_4 \times \text{Tr}_s& \\
+	\theta_4 \times \text{Tr}_s& + \theta_5 \times(\text{Tr}_i - \text{Tr}_s) \\
+	\theta_4 \times \text{Tr}_s& + \theta_5' \times \vert \text{Tr}_i - \text{Tr}_s \vert \\
+	\theta_4' \times \text{Tr}_i \\
+	\end{aligned}
+	\right.
+\end{equation}
+
+ $\text{Tr}_s$ the species average value, with a parameter $\theta_4$; $\text{Tr}_i - \text{Tr}_s$ the distance of individual trait value $\text{Tr}_i$ to species average, with the species term $\text{Tr}_s$; or $\vert \text{Tr}_i - \text{Tr}_s \vert$ the absolute distance to species average trait, with the species term $\text{Tr}_s$; or $\text{Tr}_i$ the individual trait value.
 
 Our models tested the difference of prediction between using only the species average trait value to predict growth and the same term plus an individual distance term (real or absolute) vs. the individual trait value.
 
@@ -65,7 +78,7 @@ All data analyses were made using \texttt{R} \citep{R_language} version 3.2.0 (2
 		Laminar toughness & N & Leaf economics & Individual Distance*\\
 		\hline \hline
 		\end{tabular}
-		\caption{\textbf{Selected functional traits.} Stem and Leaf Economics Spectrum are defined as in~\citep{baraloto_decoupled_2010}, the two axes unravel distinct ecological strategies (see~\nameref{sec:M&M} for more details). The "Best Growth Model" column shows which growth model (\autoref{eq:growth_mod}) explained best individual trait values. \textbf{*:} Individual distance and Absolute distance model with similar performances.} 
+		\caption{\textbf{Selected functional traits.} Stem and Leaf Economics Spectrum are defined as in~\citep{baraloto_decoupled_2010}, the two axes unravel distinct ecological strategies (see~\nameref{sec:M&M} for more details). The "Best Growth Model" column shows which growth model (\autoref{eq:growth_mod}) explained best individual trait values. \textbf{*}: Individual and Absolute distances models had similar performances.} 
 		\label{tab:seltraits}
 	\end{center}
 \end{table}

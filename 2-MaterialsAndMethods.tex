@@ -4,14 +4,14 @@
 \subsection*{Data Provenance}
 
 \subsubsection*{Growth Data}
-The first data set is an inventory of all trees over 10cm in Diameter at Breast Height (DBH), i.e. measured at 1.3m high, in nine 1-ha plots in French Guiana (see map \missfig). In each plot, trees diameter were measured every two or five years depending on the plot.
+The first data set is an inventory of all trees over 10cm in Diameter at Breast Height (DBH), i.e. measured at 1.3m high, in nine 1-ha plots in French Guiana (see map~\autoref{fig:map}). In each plot, trees diameter were measured every two or five years depending on the plot.
 
 We selected a common measured period between 2001 and 2013 comprising a total of 3549 trees; we estimated annual growth rate (AGR) in diameter by fitting a linear regression of DBH over years. The slope of the regression gave us an average AGR for each followed tree on the comprised 
 
 
 \subsubsection*{Trait Data}
 
-The second data set comes was a collection of five functional traits (see~\autoref{tab:seltraits}) extracted from a bigger database \citep{baraloto_decoupled_2010} on the same trees. Traits were not followed through time and measured only once. Selected traits are related to leaf and wood economics spectrum\citep{westoby_leaf-height-seed_1998, baraloto_decoupled_2010}.
+The second data set was a collection of five functional traits (see~\autoref{tab:seltraits}) extracted from a bigger database \citep{baraloto_decoupled_2010} on the same trees. Selected traits can be seen in two orthogonal axes of variations: leaf and stem economics spectra, contrasting different ecological strategies~\citep{westoby_leaf-height-seed_1998, baraloto_decoupled_2010}.
 
 \textbf{Leaf economics spectrum.} Specific Leaf Area (SLA) is the photo-sensitive area per unit of dry mass of the leaf; high SLA underlines investment on high light-capturing leaves that have a short payback time per gram of dry matter invested; while low SLA reflects strategies with less light-capturing leaves and longer payback time that may appear competitive in some conditions. Total leaf chlorophyll content reflects the global strategy of the plant of having resource-expansive leaves with high payback or resource-cheap leaves with lower payback. Laminar toughness measures the resistance of a leaf to pinching, high toughness values correlates with low herbivory rate, it correlates with defense strategy~\citep{westoby_leaf-height-seed_1998}.
 
@@ -20,12 +20,16 @@ The second data set comes was a collection of five functional traits (see~\autor
 \subsection*{Statistical analyses}
 
 \subsubsection*{How are intra-specific variabilities structured compared to inter-specific variabilities?}
-Variance partitioning was done using a one-way Analysis of Variance, we explained either individual traits by a species effect and an individual term error, as follows:
+
+To understand how inter-specific variability contrasted with intra-specific variability, we partitioned the variance of each trait and performance using ANalyses Of VAriances (ANOVAs) with a species term as follow:
 \begin{equation}
 	\label{eq:anova}
-	\text{Tr}_{i,s} = \mu_s + \epsilon_i,
+	\begin{aligned}
+	\text{Tr}_{s, i} &= \mu_s + \epsilon_i\\
+	\text{AGR}_{s, i} &= \overline{\text{AGR}_{s}} + \epsilon'_i\\
+	\end{aligned}
 \end{equation}
-with $\text{Tr}_{i,s}$, the trait of individual $i$ of species $s$; $\mu_s$ the mean trait of species $s$; $\epsilon_i$ the individual error term with a Gaussian distribution. The explained variance by the species effect can then be expressed by the proportion of group sum of squares over the total sum of squares. We considered the residual sum of squares as being the individual variance. We partitioned the variance similarly for AGR.
+with $\text{Tr}_{s, i}$, the trait of individual $i$ of species $s$; $\mu_s$ the mean trait of species $s$; $\epsilon_i$ the individual trait error term with a Gaussian distribution; $\text{AGR}_{s, i}$ the AGR of individual $i$ of species $s$; $\overline{\text{AGR}_{s}}$ the average AGR of species $s$; $\epsilon'_i$ the individual AGR error term and $\epsilon_i \sim \mathcal{N}(0, \sigma^2), \epsilon'_i \sim \mathcal{N}(0, \sigma'^2)$. The explained variance by the species effect can then be expressed by the proportion of group sum of squares over the total sum of squares. We considered the residual sum of squares as being the individual variance. We partitioned the variance similarly for AGR.
 
 \subsection*{Growth model}
 

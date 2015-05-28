@@ -22,49 +22,67 @@ The second data set was a collection of five functional traits (see~\autoref{tab
 \subsubsection*{How are intra-specific variabilities structured compared to inter-specific variabilities?}
 
 To understand how inter-specific variability contrasted with intra-specific variability, we partitioned the variance of each trait and performance using ANalyses Of VAriances (ANOVAs) with a species term as follow:
-\begin{equation}
-	\label{eq:anova}
-	\begin{aligned}
+\begin{subequations}
+	\begin{align}
+	\label{eq:anovatrait}
 	\text{Tr}_{s, i} &= \mu_s + \epsilon_i\\
-	\text{AGR}_{s, i} &= \overline{\text{AGR}_{s}} + \epsilon'_i\\
-	\end{aligned}
-\end{equation}
+	\label{eq:anovaagr}
+	\text{AGR}_{s, i} &= \overline{\text{AGR}_{s}} + \epsilon'_i,
+	\end{align}
+\end{subequations}
 with $\text{Tr}_{s, i}$, the trait of individual $i$ of species $s$; $\mu_s$ the mean trait of species $s$; $\epsilon_i$ the individual trait error term with a Gaussian distribution; $\text{AGR}_{s, i}$ the AGR of individual $i$ of species $s$; $\overline{\text{AGR}_{s}}$ the average AGR of species $s$; $\epsilon'_i$ the individual AGR error term and $\epsilon_i \sim \mathcal{N}(0, \sigma^2), \epsilon'_i \sim \mathcal{N}(0, \sigma'^2)$. The explained variance by the species effect can then be expressed by the proportion of group sum of squares over the total sum of squares. We considered the residual sum of squares as being the individual variance. We partitioned the variance similarly for AGR.
 
-\subsection*{Growth model}
+\subsubsection*{How does trait intra-specific variability influence radial growth?}
 
-To predict the growth of tree from a single trait we used a linear mixed-model with the general formula:
+In order to understand the influence of trait intra-specific variability on radial growth, we modeled AGR with a linear-mixed of traits and other factors. Based on~\citet{herault_functional_2011} model, we used fixed terms $DBH$ and $\log(DBH)$, because they capture well the hump shape of growth during ontogeny for tropical trees. As they did, we modeled $\log(AGR + 1)$ because of data high heteroscedasticity. We added a random intercept species effect to take inter-specific variability into account, this effect also influenced the slopes of $DBH$ and $\log(DBH)$ terms. We also added a random intercept plot effect to take inter-plot variability into account. Then depending on the hypothesis tested various fixed terms were added to the model:
+
 \begin{equation}
 	\label{eq:growth_mod}
-	\log(\text{AGR}_{i, s, p} + 1) = \theta_0 + \gamma_{0, s} + \gamma_p
-		+ (\theta_1 + \gamma_{1, s}) \times \text{DBH}
-		+ (\theta_2 + \gamma_{2, s}) \times \log(\text{DBH})
+	\log(\text{AGR}_{p, s, i} + 1) = \prescript{0}{}\theta + \prescript{0}{}\gamma_s + \gamma_p
+		+ (\prescript{1}{}\theta + \prescript{1}{}\gamma_s) \times \text{DBH}
+		+ (\prescript{2}{}\theta + \prescript{2}{}\gamma_s) \times \log(\text{DBH})
 		+ \delta
 		+ \epsilon_i,
 \end{equation}
-with $\epsilon_i \sim \mathcal{N}(0, \theta_3)$ the individual residual,
-where $\text{AGR}_{i, s, p}$ is the AGR of tree $i$ of species $s$ in plot $p$; $\theta_0 \ldots \theta_3$ are parameters to be estimated; $\gamma_{0, s} \ldots \gamma_{2, s}$ and $\gamma_p$ follow a centered Gaussian distribution with unknown variances $\sigma^2_{0, s} \ldots \sigma^2_{2, s}$ and $\sigma^2_p$. $\text{Tr}_s$ is the average trait value for species $s$.
+with $\epsilon_i \sim \mathcal{N}(0, \prescript{3}{}\theta)$ the individual residual,
+where $\text{AGR}_{p, s, i}$ is the AGR of tree $i$ of species $s$ in plot $p$; $\prescript{0}{}\theta \dots \prescript{3}{}\theta$ are parameters to be estimated; $\prescript{0}{}\gamma_{s} \dots \prescript{2}{}\gamma_s$ and $\gamma_p$ follow a centered Gaussian distribution with unknown variances $\prescript{0}{}\sigma^2_s \dots \prescript{2}{}\sigma^2_s$ and $\sigma^2_p$. $\text{Tr}_s$ is the average trait value for species $s$.
 
-To understand how the distance to species average value affected the predicted growth, we used different $\delta$ values:
+We tested different hypotheses through the $\delta$ term in~\autoref{eq:growth_mod}. If we position an individual relative to its species mean, we can compare them on a hierarchy of traits, and the relevant variable is the hierarchical distance between individual trait and species average trait. We may also hypothesized as~\citet{kunstler_competitive_2012} did for competition, that the relevant relation for AGR would be the absolute distance. We obtain two models that have to be compared with models having only the specific trait or the individual trait.
 \begin{equation}
-	\label{eq:delta}
-	\delta = \left\{
+\label{eq:delta}
+\delta = \left\{
 	\begin{aligned}
-	\theta_4 \times \text{Tr}_s& \\
-	\theta_4 \times \text{Tr}_s& + \theta_5 \times(\text{Tr}_i - \text{Tr}_s) \\
-	\theta_4 \times \text{Tr}_s& + \theta_5' \times \vert \text{Tr}_i - \text{Tr}_s \vert \\
-	\theta_4' \times \text{Tr}_i \\
+		\prescript{4}{}\theta\times \text{Tr}_s & \\
+		\prescript{4}{}\theta \times \text{Tr}_s & + \prescript{5}{}\theta \times(\text{Tr}_i - \text{Tr}_s) \\
+		\prescript{4}{}\theta \times \text{Tr}_s & + \prescript{5}{}\theta' \times \vert \text{Tr}_i - \text{Tr}_s \vert \\
+		\prescript{4}{}\theta' \times \text{Tr}_i& \\
 	\end{aligned}
-	\right.
+\right.
 \end{equation}
 
- $\text{Tr}_s$ the species average value, with a parameter $\theta_4$; $\text{Tr}_i - \text{Tr}_s$ the distance of individual trait value $\text{Tr}_i$ to species average, with the species term $\text{Tr}_s$; or $\vert \text{Tr}_i - \text{Tr}_s \vert$ the absolute distance to species average trait, with the species term $\text{Tr}_s$; or $\text{Tr}_i$ the individual trait value.
 
-Our models tested the difference of prediction between using only the species average trait value to predict growth and the same term plus an individual distance term (real or absolute) vs. the individual trait value.
+ $\text{Tr}_s$ the species average value, with a parameter $\prescript{4}{}\theta$; $\text{Tr}_i - \text{Tr}_s$ the hierarchical distance of individual trait value $\text{Tr}_i$ to species average trait value $\text{Tr}_s$; or $\vert \text{Tr}_i - \text{Tr}_s \vert$ the absolute distance to species average trait; and $\text{Tr}_i$ the individual trait value.
+ 
+%We used those models~\eqref{eq:delta} to understand how the intra-specific variability of single trait influenced AGR, we generalized them to all the traits taken together to understand the interplay between traits:
+%
+%\begin{equation}
+%	\label{eq:multi}
+%	\delta = \left\{
+%	\begin{aligned}
+%	\sum_{k = 1}^{K} \prescript{4}{}\theta_k \text{Tr}_{k,s} & \\
+%	\sum_{k = 1}^{K} \prescript{4}{}\theta_k \text{Tr}_{k,s} & + \prescript{5}{}\theta_k \times(\text{Tr}_{k,i} - \text{Tr}_‘k,s}) \\
+%	\sum_{k = 1}^{K} \prescript{4}{}\theta_k \text{Tr}_{k,s} & + \prescript{5}{}\theta_k \times \vert \text{Tr}_{k,i} - \text{Tr}_{k,s} \vert \\
+%	\sum_{k = 1}^{K} \prescript{5}{}\theta_k \text{Tr}_{k,i} \\
+%	\end{aligned}
+%	\right.,
+%\end{equation}
+%
+%with $K$ the total number of traits, and the other terms described as above depending on the given trait $k$.
 
-\subsection*{Simulations}
+\subsubsection{Intra-specific variability vs. inter-specific variability effects on performance for each trait}
 
-For each trait, we selected the best growth model with both the highest adapted R-squared for mixed models \citep{nakagawa_general_2013} and lowest Akaike Information Criterion (AIC); between models with either individual distance to species trait average or the absolute value of this distance (see~\autoref{tab:seltraits}). We simulated regularly spaced values of both the species average trait value and the distance to species average, within the 5$^{\text{th}}$ and 95$^{\text{th}}$ centiles of our data. From those simulated values, with fixed DBH value, we used growth models to predict AGR, depending on both species average and distance to species average trait value.
+Intra-specific variability and inter-specific variaibilty may have different impacts on performance. For each trait we selected the growth model from~\autoref{eq:delta} that had the highest adapted R-squared for mixed models~\citep{nakagawa_general_2013}, i.e. the model that best described our data. 
+We computed regularly spaced species average trait values in the 5\%-95\% of species average trait values in our data set as well as individual's distance to species average in the same 5\%-95\% range of values in our data set. We then associated every individual's distance to every species average trait, giving us all possible couples. From this grid of data, we predicted AGR of those simulated individuals using selected trait-specific models with DBH set as data median value.
 
 \subsection*{Data analysis}
 

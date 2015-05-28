@@ -62,22 +62,6 @@ We tested different hypotheses through the $\delta$ term in~\autoref{eq:growth_m
 
 
  $\text{Tr}_s$ the species average value, with a parameter $\prescript{4}{}\theta$; $\text{Tr}_i - \text{Tr}_s$ the hierarchical distance of individual trait value $\text{Tr}_i$ to species average trait value $\text{Tr}_s$; or $\vert \text{Tr}_i - \text{Tr}_s \vert$ the absolute distance to species average trait; and $\text{Tr}_i$ the individual trait value.
- 
-%We used those models~\eqref{eq:delta} to understand how the intra-specific variability of single trait influenced AGR, we generalized them to all the traits taken together to understand the interplay between traits:
-%
-%\begin{equation}
-%	\label{eq:multi}
-%	\delta = \left\{
-%	\begin{aligned}
-%	\sum_{k = 1}^{K} \prescript{4}{}\theta_k \text{Tr}_{k,s} & \\
-%	\sum_{k = 1}^{K} \prescript{4}{}\theta_k \text{Tr}_{k,s} & + \prescript{5}{}\theta_k \times(\text{Tr}_{k,i} - \text{Tr}_‘k,s}) \\
-%	\sum_{k = 1}^{K} \prescript{4}{}\theta_k \text{Tr}_{k,s} & + \prescript{5}{}\theta_k \times \vert \text{Tr}_{k,i} - \text{Tr}_{k,s} \vert \\
-%	\sum_{k = 1}^{K} \prescript{5}{}\theta_k \text{Tr}_{k,i} \\
-%	\end{aligned}
-%	\right.,
-%\end{equation}
-%
-%with $K$ the total number of traits, and the other terms described as above depending on the given trait $k$.
 
 \subsubsection{Intra-specific variability vs. inter-specific variability effects on performance for each trait}
 
@@ -93,16 +77,16 @@ All data analyses were made using \texttt{R} \citep{R_language} version 3.2.0 (2
 		\rowcolors{1}{white}{lightgray}
 		\begin{tabular}{lccc}
 		\hline \hline
-		Trait Name & Units & Role & Best Growth models \\
+		Trait Name & Units & Role \\
 		\hline
-		Trunk bark thickness & mm & Stem economics & Absolute Distance\\
-		Xylem density (wood density) & $\text{g}.\text{cm}^{-3}$ & Stem economics & Individual Distance* \\
-		Specific Leaf Area (SLA) & $\text{cm}^2.\text{g}^{-1}$ & Leaf economics & Individual Distance\\
-		Laminar total chlorophyll & $\text{µm}.\text{mm}^{-2}$  & Leaf economics & Individual Distance*\\
-		Laminar toughness & N & Leaf economics & Individual Distance*\\
+		Trunk bark thickness & mm & Stem economics \\
+		Xylem density (wood density) & $\text{g}.\text{cm}^{-3}$ & Stem economics \\
+		Specific Leaf Area (SLA) & $\text{cm}^2.\text{g}^{-1}$ & Leaf economics \\
+		Laminar total chlorophyll & $\text{µm}.\text{mm}^{-2}$  & Leaf economics \\
+		Laminar toughness & N & Leaf economics \\
 		\hline \hline
 		\end{tabular}
-		\caption{\textbf{Selected functional traits.} Stem and Leaf Economics Spectrum are defined as in~\citep{baraloto_decoupled_2010}, the two axes unravel distinct ecological strategies (see~\nameref{sec:M&M} for more details). The "Best Growth Model" column shows which growth model (\autoref{eq:growth_mod}) explained best individual trait values. \textbf{*}: Individual and Absolute distances models had similar performances.} 
+		\caption{\textbf{Selected functional traits.} Stem and Leaf Economics Spectrum are defined as in~\citep{baraloto_decoupled_2010}, the two axes unravel distinct ecological strategies. Leaf economics spectrum contrasts} 
 		\label{tab:seltraits}
 	\end{center}
 \end{table}

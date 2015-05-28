@@ -15,7 +15,43 @@ The best model for bark thickness had an absolute distance to species average tr
 
 For each trait we had AGR predictions from models for a given range of data (\autoref{fig:simul}), unraveling patterns of change in AGR with individual's distance or with species average trait. For example, AGR increases with decreasing individual's distance in SLA.
 
-\begin{figure}[!ht]
+\begin{table}[!t]
+	\begin{center}
+		\rowcolors{1}{white}{lightgray}
+		\begin{tabular}{llcccc}
+		  \hline
+		  \hline
+		 Trait Name & Model Type & Marginal $\text{R}^2$ & Cond. $\text{R}^2$ & AIC & logLikelihood \\ 
+		  \hline
+		Bark Thickness & Species Avg. & 0.104 & 0.472 & -2790 & 1407 \\ 
+		            & Hierarchical Distance & 0.106 & 0.471 & -2794 & 1410 \\ 
+		            & \textbf{Absolute Distance} & 0.100 & \textbf{0.497} & -2860 & \textbf{1443} \\ 
+		            & Individual Trait & 0.102 & 0.470 & -2792 & 1408 \\ 
+		  Wood Density & Species Avg. & 0.142 & 0.474 & -1838 & 931 \\ 
+		               & \textbf{Hierarchical Distance} & 0.139 & \textbf{0.530} & -1910 & \textbf{968} \\ 
+		               & Absolute Distance & 0.140 & 0.529 & -1906 & 966 \\ 
+		               & \textbf{Individual Trait} & 0.137 & \textbf{0.530} & -1911 & \textbf{968} \\ 
+		  SLA & Species Avg. & 0.094 & 0.485 & -3081 & 1553 \\ 
+		      & \textbf{Hierarchical Distance} & 0.095 & \textbf{0.489} & -3092 & \textbf{1559} \\ 
+		      & Absolute Distance & 0.096 & 0.459 & -3000 & 1513 \\ 
+		      & Individual Trait & 0.096 & \textbf{0.490} & -3093 & \textbf{1559} \\ 
+		  Chloro. Content & Species Avg. & 0.092 & 0.487 & -3143 & 1583 \\ 
+		                  & \textbf{Hierarchical Distance} & 0.093 & \textbf{0.488} & -3145 & \textbf{1586} \\ 
+		                  & Absolute Distance & 0.092 & 0.486 & -3143 & 1584 \\ 
+		                  & Individual Trait & 0.100 & 0.469 & -3075 & 1550 \\ 
+		  Toughness & Species Avg. & 0.088 & 0.478 & -3136 & 1580 \\ 
+		            & \textbf{Hierarchical Distance} & 0.088 & \textbf{0.479} & -3135 & \textbf{1581} \\ 
+		            & Absolute Distance & 0.088 & 0.478 & -3134 & 1580 \\ 
+		            & Individual Trait & 0.088 & 0.479 & -3134 & 1579 \\ 
+		   \hline
+		   \hline
+		\end{tabular}
+		\caption{\textbf{Summary table of tested trait-specific growth models.} We modeled radial growth using linear-mixed model, all models contained plot and species random effects, as well as DBH and $\log\text{DBH}$ terms to take growth curve shape into account~\citep{herault_functional_2011}. Then, for each trait, we added a fixed effect that contained different terms: \textbf{Species Avg.}, only the species average trait value; \textbf{Hierarchical Distance}, the species average plus the difference between individual's trait and species average; \textbf{Absolute Distance}, the species average plus the absolute difference between individual's trait and species average; \textbf{Individual Trait}, only the trait value of individuals. Models indicated in \textbf{bold} are those with the highest logarithmic likelihood per trait.}
+		\label{tab:growth_mod}
+	\end{center}
+\end{table}
+
+\begin{figure}[!tb]
 	\centering
 	\begin{subfigure}[c]{0.45\textwidth}
 		\includegraphics[scale=0.75]{figures/Plots_Map_2015-05-26.pdf}
@@ -31,7 +67,7 @@ For each trait we had AGR predictions from models for a given range of data (\au
 	\label{fig:gen}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[!tb]
 	\centering
 	\includegraphics{figures/Sel_Traits_Simul_Pred_AGR_2015-05-22.pdf}
 	\caption{\textbf{Simulations of species trait and predictions of AGR with growth models.} Surface plots of predicted AGR of simulated range of data: X-axis, centered species average trait (species average trait minus mean of all species average trait); Y-axis, individual distance to species average trait. Black lines are equal-AGR lines over the surface, i.e. on those line each point has the same AGR value. For details on traits see~\autoref{tab:seltraits}.}

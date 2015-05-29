@@ -4,7 +4,7 @@
 \subsection*{Data Provenance}
 
 \subsubsection*{Growth Data}
-The first data set is an inventory of all trees over 10cm in Diameter at Breast Height (DBH), i.e. measured at 1.3m high, in nine 1-ha plots in French Guiana (see map~\autoref{fig:map}). In each plot, trees diameter were measured every two or five years depending on the plot.
+The first data set is an inventory of all trees over 10cm in Diameter at Breast Height (DBH), i.e. measured at 1.3m high, in nine 1-ha plots in French Guiana (see map~\autoref{fig:map}). In each plot, tree diameters were measured every two or five years depending on the plot.
 
 We selected a common measured period between 2001 and 2013 comprising a total of 3549 trees; we estimated annual growth rate (AGR) in diameter by fitting a linear regression of DBH over years. The slope of the regression gave us an average AGR for each followed tree on the comprised 
 
@@ -13,7 +13,7 @@ We selected a common measured period between 2001 and 2013 comprising a total of
 
 The second data set was a collection of five functional traits (see~\autoref{tab:seltraits}) extracted from a bigger database \citep{baraloto_decoupled_2010} on the same trees. Selected traits can be seen in two orthogonal axes of variations: leaf and stem economics spectra, contrasting different ecological strategies~\citep{westoby_leaf-height-seed_1998, baraloto_decoupled_2010}.
 
-\textbf{Leaf economics spectrum.} Specific Leaf Area (SLA) is the photo-sensitive area per unit of dry mass of the leaf; high SLA underlines investment on high light-capturing leaves that have a short payback time per gram of dry matter invested; while low SLA reflects strategies with less light-capturing leaves and longer payback time that may appear competitive in some conditions. Total leaf chlorophyll content reflects the global strategy of the plant of having resource-expansive leaves with high payback or resource-cheap leaves with lower payback. Laminar toughness measures the resistance of a leaf to pinching, high toughness values correlates with low herbivory rate, it correlates with defense strategy~\citep{westoby_leaf-height-seed_1998}.
+\textbf{Leaf economics spectrum.} Specific Leaf Area (SLA) is the photo-sensitive area per unit of dry mass of the leaf; high SLA underlines investment on high light-capturing leaves that have a short payback time per gram of dry matter invested; while low SLA reflects strategies with less light-capturing leaves and longer payback time that may appear competitive in some conditions. Total leaf chlorophyll content reflects the global strategy of the plant of having resource-expansive leaves with high payback or resource-cheap leaves with lower payback~\citep{coste_assessing_2010}. Laminar toughness measures the resistance of a leaf to pinching, high toughness values correlates with low herbivory rate, it correlates with defense strategy~\citep{westoby_leaf-height-seed_1998}.
 
 \textbf{Stem economics spectrum.} Wood density underlines different ecological strategy for trees, a low wood density makes wood less stable and less better protected against herbivory but cheap volumetric construction cost because of low resource requirements; while a high wood density makes the tree more stable but with higher construction cost, meaning a lower growth. Trunk bark thickness associate with defense strategies in neotropical forests, thicker bark provides higher resistance to pathogens and herbivores~\citep{paine_functional_2010}.
 
@@ -30,11 +30,11 @@ To understand how inter-specific variability contrasted with intra-specific vari
 	\text{AGR}_{s, i} &= \overline{\text{AGR}_{s}} + \epsilon'_i,
 	\end{align}
 \end{subequations}
-with $\text{Tr}_{s, i}$, the trait of individual $i$ of species $s$; $\mu_s$ the mean trait of species $s$; $\epsilon_i$ the individual trait error term with a Gaussian distribution; $\text{AGR}_{s, i}$ the AGR of individual $i$ of species $s$; $\overline{\text{AGR}_{s}}$ the average AGR of species $s$; $\epsilon'_i$ the individual AGR error term and $\epsilon_i \sim \mathcal{N}(0, \sigma^2), \epsilon'_i \sim \mathcal{N}(0, \sigma'^2)$. The explained variance by the species effect can then be expressed by the proportion of group sum of squares over the total sum of squares. We considered the residual sum of squares as being the individual variance. We partitioned the variance similarly for AGR.
+with $\text{Tr}_{s, i}$, the trait of individual $i$ of species $s$; $\mu_s$ the mean trait of species $s$; $\epsilon_i$ the individual trait error term with a Gaussian distribution; $\text{AGR}_{s, i}$ the AGR of individual $i$ of species $s$; $\overline{\text{AGR}_{s}}$ the average AGR of species $s$; $\epsilon'_i$ the individual AGR error term and $\epsilon_i \sim \mathcal{N}(0, \sigma^2), \epsilon'_i \sim \mathcal{N}(0, \sigma'^2)$. The explained variance by the species effect can then be expressed by the proportion of group sum of squares over the total sum of squares. We considered the residual sum of squares as being the individual variance plus white noise. We partitioned the variance similarly for AGR.
 
 \subsubsection*{How does trait intra-specific variability influence radial growth?}
 
-In order to understand the influence of trait intra-specific variability on radial growth, we modeled AGR with a linear-mixed of traits and other factors. Based on~\citet{herault_functional_2011} model, we used fixed terms $DBH$ and $\log(DBH)$, because they capture well the hump shape of growth during ontogeny for tropical trees. As they did, we modeled $\log(AGR + 1)$ because of data high heteroscedasticity. We added a random intercept species effect to take inter-specific variability into account, this effect also influenced the slopes of $DBH$ and $\log(DBH)$ terms. We also added a random intercept plot effect to take inter-plot variability into account. Then depending on the hypothesis tested various fixed terms were added to the model:
+In order to understand the influence of trait intra-specific variability on radial growth, we modeled AGR with a mixed linear model of traits and other factors. Based on~\citet{herault_functional_2011} ontogenical model, we used fixed terms $DBH$ and $\log(DBH)$, because they capture well the hump shape of growth during ontogeny for tropical trees. As they did, we modeled $\log(AGR + 1)$ because of data high heteroscedasticity. We added a random intercept for species effect to take inter-specific variability into account, this effect also influenced the slopes of $DBH$ and $\log(DBH)$ terms. We also added a random intercept plot effect to take inter-plot variability into account. Then depending on the hypothesis tested various fixed terms were added to the model:
 
 \begin{equation}
 	\label{eq:growth_mod}
@@ -45,28 +45,28 @@ In order to understand the influence of trait intra-specific variability on radi
 		+ \epsilon_i,
 \end{equation}
 with $\epsilon_i \sim \mathcal{N}(0, \prescript{3}{}\theta)$ the individual residual,
-where $\text{AGR}_{p, s, i}$ is the AGR of tree $i$ of species $s$ in plot $p$; $\prescript{0}{}\theta \dots \prescript{3}{}\theta$ are parameters to be estimated; $\prescript{0}{}\gamma_{s} \dots \prescript{2}{}\gamma_s$ and $\gamma_p$ follow a centered Gaussian distribution with unknown variances $\prescript{0}{}\sigma^2_s \dots \prescript{2}{}\sigma^2_s$ and $\sigma^2_p$. $\text{Tr}_s$ is the average trait value for species $s$.
+where $\text{AGR}_{p, s, i}$ is the AGR of tree $i$ of species $s$ in plot $p$; $\prescript{0}{}\theta \dots \prescript{3}{}\theta$ are parameters to be estimated; $\prescript{0}{}\gamma_{s} \dots \prescript{2}{}\gamma_s$ and $\gamma_p$ follow a zero-centered Gaussian distribution with unknown variances $\prescript{0}{}\sigma^2_s \dots \prescript{2}{}\sigma^2_s$ and $\sigma^2_p$. $\text{Tr}_s$ is the average trait value for species $s$.
 
 We tested different hypotheses through the $\delta$ term in~\autoref{eq:growth_mod}. If we position an individual relative to its species mean, we can compare them on a hierarchy of traits, and the relevant variable is the hierarchical distance between individual trait and species average trait. We may also hypothesized as~\citet{kunstler_competitive_2012} did for competition, that the relevant relation for AGR would be the absolute distance. We obtain two models that have to be compared with models having only the specific trait or the individual trait.
 \begin{equation}
 \label{eq:delta}
 \delta = \left\{
-	\begin{aligned}
-		\prescript{4}{}\theta\times \text{Tr}_s & \\
-		\prescript{4}{}\theta \times \text{Tr}_s & + \prescript{5}{}\theta \times(\text{Tr}_i - \text{Tr}_s) \\
-		\prescript{4}{}\theta \times \text{Tr}_s & + \prescript{5}{}\theta' \times \vert \text{Tr}_i - \text{Tr}_s \vert \\
-		\prescript{4}{}\theta' \times \text{Tr}_i& \\
-	\end{aligned}
+	\begin{array}{llr}
+		\prescript{4}{}\theta\times \text{Tr}_s & & \text{Species Average Model} \\
+		\prescript{4}{}\theta \times \text{Tr}_s & + \prescript{5}{}\theta \times(\text{Tr}_i - \text{Tr}_s) & \text{Hierarchical Distance Model} \\
+		\prescript{4}{}\theta \times \text{Tr}_s & + \prescript{5}{}\theta' \times \vert \text{Tr}_i - \text{Tr}_s \vert & \text{Absolute Distance Model} \\
+		\prescript{4}{}\theta' \times \text{Tr}_i & & \text{Individual Trait Model} \\
+	\end{array}
 \right.
 \end{equation}
 
 
  $\text{Tr}_s$ the species average value, with a parameter $\prescript{4}{}\theta$; $\text{Tr}_i - \text{Tr}_s$ the hierarchical distance of individual trait value $\text{Tr}_i$ to species average trait value $\text{Tr}_s$; or $\vert \text{Tr}_i - \text{Tr}_s \vert$ the absolute distance to species average trait; and $\text{Tr}_i$ the individual trait value.
 
-\subsubsection{Intra-specific variability vs. inter-specific variability effects on performance for each trait}
+\subsubsection*{Intra-specific variability vs. inter-specific variability effects on performance for each trait}
 
 Intra-specific variability and inter-specific variaibilty may have different impacts on performance. For each trait we selected the growth model from~\autoref{eq:delta} that had the highest adapted R-squared for mixed models~\citep{nakagawa_general_2013}, i.e. the model that best described our data. 
-We computed regularly spaced species average trait values in the 5\%-95\% of species average trait values in our data set as well as individual's distance to species average in the same 5\%-95\% range of values in our data set. We then associated every individual's distance to every species average trait, giving us all possible couples. From this grid of data, we predicted AGR of those simulated individuals using selected trait-specific models with DBH set as data median value.
+We computed regularly spaced species average trait values in the 5\%-95\% of species average trait values in our data set as well as individual's distance to species average in the same 5\%-95\% range of values in our data set. We then associated every individual's distance to every species average trait, giving us all possible couples. From this grid of data, we predicted AGR of those individuals using selected trait-specific models with DBH set as data median value.
 
 \subsection*{Data analysis}
 

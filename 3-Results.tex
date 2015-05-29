@@ -13,33 +13,34 @@ Using the best models (in bold in~\autoref{tab:growth_mod}) that included a dist
 
 \begin{table}[!t]
 	\begin{center}
-		\rowcolors{1}{white}{lightgray}
 		\begin{tabular}{llcccc}
-		  \hline
 		  \hline
 		 Trait Name & Model Type & Marginal $\text{R}^2$ & Cond. $\text{R}^2$ & AIC & logLikelihood \\ 
 		  \hline
 		Bark Thickness & Species Avg. & 0.104 & 0.472 & -2790 & 1407 \\ 
 		            & Hierarchical Distance & 0.106 & 0.471 & -2794 & 1410 \\ 
 		            & \textbf{Absolute Distance} & 0.100 & \textbf{0.497} & -2860 & \textbf{1443} \\ 
-		            & Individual Trait & 0.102 & 0.470 & -2792 & 1408 \\ 
+		            & Individual Trait & 0.102 & 0.470 & -2792 & 1408 \\
+		  \cline{2-6}
 		  Wood Density & Species Avg. & 0.142 & 0.474 & -1838 & 931 \\ 
 		               & \textbf{Hierarchical Distance} & 0.139 & \textbf{0.530} & -1910 & \textbf{968} \\ 
 		               & Absolute Distance & 0.140 & 0.529 & -1906 & 966 \\ 
-		               & \textbf{Individual Trait} & 0.137 & \textbf{0.530} & -1911 & \textbf{968} \\ 
+		               & \textbf{Individual Trait} & 0.137 & \textbf{0.530} & -1911 & \textbf{968} \\
+		  \cline{2-6}
 		  SLA & Species Avg. & 0.094 & 0.485 & -3081 & 1553 \\ 
 		      & \textbf{Hierarchical Distance} & 0.095 & \textbf{0.489} & -3092 & \textbf{1559} \\ 
 		      & Absolute Distance & 0.096 & 0.459 & -3000 & 1513 \\ 
 		      & \textbf{Individual Trait} & 0.096 & \textbf{0.490} & -3093 & \textbf{1559} \\ 
+		  \cline{2-6}
 		  Chloro. Content & Species Avg. & 0.092 & 0.487 & -3143 & 1583 \\ 
 		                  & \textbf{Hierarchical Distance} & 0.093 & \textbf{0.488} & -3145 & \textbf{1586} \\ 
 		                  & Absolute Distance & 0.092 & 0.486 & -3143 & 1584 \\ 
-		                  & Individual Trait & 0.100 & 0.469 & -3075 & 1550 \\ 
+		                  & Individual Trait & 0.100 & 0.469 & -3075 & 1550 \\
+		  \cline{2-6}	
 		  Toughness & Species Avg. & 0.088 & 0.478 & -3136 & 1580 \\ 
 		            & \textbf{Hierarchical Distance} & 0.088 & \textbf{0.479} & -3135 & \textbf{1581} \\ 
 		            & Absolute Distance & 0.088 & 0.478 & -3134 & 1580 \\ 
-		            & Individual Trait & 0.088 & 0.479 & -3134 & 1579 \\ 
-		   \hline
+		            & Individual Trait & 0.088 & 0.479 & -3134 & 1579 \\
 		   \hline
 		\end{tabular}
 		\caption{\textbf{Summary table of tested trait-specific growth models.} We modeled radial growth using linear-mixed model, all models contained plot and species random effects, as well as DBH and $\log\text{DBH}$ terms to take growth curve shape into account~\citep{herault_functional_2011}. Then, for each trait, we added a fixed effect that contained different terms: \textbf{Species Avg.}, only the species average trait value; \textbf{Hierarchical Distance}, the species average plus the difference between individual's trait and species average; \textbf{Absolute Distance}, the species average plus the absolute difference between individual's trait and species average; \textbf{Individual Trait}, only the trait value of individuals. Models indicated in \textbf{bold} are those with the highest logarithmic likelihood per trait.}
@@ -59,13 +60,13 @@ Using the best models (in bold in~\autoref{tab:growth_mod}) that included a dist
 		\caption{}
 		\label{fig:aov}
 	\end{subfigure}
-	\caption{\textbf{(a) Plots map.} 9 1-ha plots were used, spread in French Guiana, two plots were surveyed both in Nouragues and in Paracou (see~\citealp{baraloto_decoupled_2010}) \textbf{(b) Explained variance by species effect in ANOVAs.} Dot-plot of explained variance in ANOVA by the species effect for traits and AGR. The right space after the orange is the residual variance. \textbf{Chloro. Content}: Laminar Chlorophyll Content, \textbf{AGR}: Annual Growth Rate (in diameter).}
+	\caption{\textbf{(a) Plots map.} 9 1-ha plots were used, spread in French Guiana, two plots were surveyed both in Nouragues and in Paracou (see~\citealp{baraloto_decoupled_2010}) \textbf{(b) Explained variance by species effect in ANOVAs.} Dot-plot of explained variance in ANOVA by the species effect for traits and AGR. \textbf{Chloro. Content}: Laminar Chlorophyll Content, \textbf{AGR}: Annual Growth Rate (in diameter).}
 	\label{fig:gen}
 \end{figure}
 
 \begin{figure}[!tb]
 	\centering
 	\includegraphics{figures/Sel_Traits_Simul_AGR_2015-05-28.pdf}
-	\caption{\textbf{Simulations of species trait and predictions of AGR with growth models.} Surface plots of predicted AGR of simulated range of data: X-axis, centered species average trait (species average trait minus mean of all species average trait); Y-axis, individual distance to species average trait. Black lines are equal-AGR lines over the surface, i.e. on those line each point has the same AGR value, each line mark a $5\exp^{-3}\text{mm}.\text{yr}^{-1}$ break. For details on traits see~\autoref{tab:seltraits}.}
+	\caption{\textbf{Simulations of species trait and predictions of AGR with growth models.} Surface plots of predicted AGR of simulated range of data: X-axis, centered species average trait (species average trait minus mean of all species average trait); Y-axis, individual distance to species average trait. Black lines are equal-AGR lines over the surface, i.e. on those line each point has the same AGR value, each line mark a $5e^{-3}\text{mm}.\text{yr}^{-1}$ break. For details on traits see~\autoref{tab:seltraits}.}
 	\label{fig:simul}
 \end{figure}

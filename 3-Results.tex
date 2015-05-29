@@ -11,7 +11,7 @@ For bark thickness the absolute distance model improved the conditional R-square
 
 Using the best models (in bold in~\autoref{tab:growth_mod}) that included a distance term we predicted AGR for a range of individual trait values and species average values. To underline the interplay between intra- and inter-specific variabilities we plotted the centered species average trait value vs. the hierarchical distance of indivdual's (see~\autoref{fig:simul}). We obtained AGR "landscapes", that show the pattern of variations of variation as a function of individual and species trait variation. Depending on the trait we had different patterns, for SLA and wood density we had similar patterns: the larger the species average trait value, the lower the AGR, and the higher the individual hierarchical distance the lower the AGR. For example, an increase of $10\text{cm}^2.\text{g}^{-1}$ in SLA species average decreases the growth by $0.035\text{mm}.\text{yr}^{-1}$ while the same increase in hierarchical distance decreases the AGR by $0.02\text{mm}.\text{yr}^{-1}$. For laminar chlorophyll content we observe that increasing species average as well as increasing hierarchical distance lead to increasing AGR. While for leaf toughness, species average and hierarchical AGR gradients are opposed: an increase in species average decreases AGR, and an increase individual hierarchical distance increases AGR. Because the best model for bark thickness was an absolute distance model, we observe the symmetrical patterns of AGR variations for change in hierarchical distance: globally, the higher the hierarchical distance the lower the AGR, while the higher the species average, the lower the growth.
 
-\begin{table}[!t]
+\begin{table}[!pt]
 	\begin{center}
 		\begin{tabular}{llcccc}
 		  \hline
@@ -41,6 +41,11 @@ Using the best models (in bold in~\autoref{tab:growth_mod}) that included a dist
 		            & \textbf{Hierarchical Distance} & 0.088 & \textbf{0.479} & -3135 & \textbf{1581} \\ 
 		            & Absolute Distance & 0.088 & 0.478 & -3134 & 1580 \\ 
 		            & Individual Trait & 0.088 & 0.479 & -3134 & 1579 \\
+		  \cline{2-6}
+		  All Traits & Species Avg. & 0.133 & 0.524 & -1739 & 885 \\ 
+		             & \textbf{Hierarchical Distance} & 0.143 & \textbf{0.532} & -1761 & \textbf{901} \\
+		             & Absolute Distance & 0.138 & 0.524 & -1743 & 892 \\
+		             & Individual Trait & 0.138 & 0.528 & -1766 & 899 \\ 
 		   \hline
 		\end{tabular}
 		\caption{\textbf{Summary table of tested trait-specific growth models.} We modeled radial growth using linear-mixed model, all models contained plot and species random effects, as well as DBH and $\log\text{DBH}$ terms to take growth curve shape into account~\citep{herault_functional_2011}. Then, for each trait, we added a fixed effect that contained different terms: \textbf{Species Avg.}, only the species average trait value; \textbf{Hierarchical Distance}, the species average plus the difference between individual trait and species average; \textbf{Absolute Distance}, the species average plus the absolute difference between individual trait and species average; \textbf{Individual Trait}, only the trait value of individuals. Models indicated in \textbf{bold} are those with the highest logarithmic likelihood per trait.}
@@ -64,7 +69,7 @@ Using the best models (in bold in~\autoref{tab:growth_mod}) that included a dist
 	\label{fig:gen}
 \end{figure}
 
-\begin{figure}[!tb]
+\begin{figure}[!ptb]
 	\centering
 	\includegraphics{figures/Sel_Traits_Simul_AGR_2015-05-28.pdf}
 	\caption{\textbf{Predictions of AGR depending on intra-specific and inter-specific variabilities in traits.} Surface plots of predicted AGR of simulated range of data: X-axis, centered species average trait (species average trait minus mean of all species average trait); Y-axis, individual distance to species average trait. Black lines are equal-AGR lines over the surface, i.e. on those line each point has the same AGR value, each line mark a $5e^{-3}\text{mm}.\text{yr}^{-1}$ break. For details on traits see~\autoref{tab:seltraits}.}

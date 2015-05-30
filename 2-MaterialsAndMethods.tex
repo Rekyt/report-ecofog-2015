@@ -36,14 +36,13 @@ with $\text{Tr}_{s, i}$, the trait of individual $i$ of species $s$; $\mu_s$ the
 
 In order to understand the influence of trait intra-specific variability on radial growth, we modeled AGR with a mixed linear model of traits and other factors. Based on~\citet{herault_functional_2011} ontogenical model, we used fixed terms $DBH$ and $\log(DBH)$, because they capture well the hump shape of growth during ontogeny for tropical trees. As they did, we modeled $\log(AGR + 1)$ because of data high heteroscedasticity. We added a random intercept for species effect to take inter-specific variability into account, this effect also influenced the slopes of $DBH$ and $\log(DBH)$ terms. We also added a random intercept plot effect to take inter-plot variability into account. Then depending on the hypothesis tested various fixed terms were added to the model:
 
-\begin{equation}
+\begin{align}
 	\label{eq:growth_mod}
-	\log(\text{AGR}_{p, s, i} + 1) = \prescript{0}{}\theta + \prescript{0}{}\gamma_s + \gamma_p
-		+ (\prescript{1}{}\theta + \prescript{1}{}\gamma_s) \times \text{DBH}
-		+ (\prescript{2}{}\theta + \prescript{2}{}\gamma_s) \times \log(\text{DBH})
-		+ \delta
-		+ \epsilon_i,
-\end{equation}
+	\log(\text{AGR}_{p, s, i} + 1) =& \prescript{0}{}\theta + \prescript{0}{}\gamma_s + \gamma_p \nonumber \\
+		&+ (\prescript{1}{}\theta + \prescript{1}{}\gamma_s) \times \text{DBH} \nonumber \\
+		&+ (\prescript{2}{}\theta + \prescript{2}{}\gamma_s) \times \log(\text{DBH}) \nonumber \\
+		&+ \delta + \epsilon_i,
+\end{align}
 with $\epsilon_i \sim \mathcal{N}(0, \prescript{3}{}\theta)$ the individual residual,
 where $\text{AGR}_{p, s, i}$ is the AGR of tree $i$ of species $s$ in plot $p$; $\prescript{0}{}\theta \dots \prescript{3}{}\theta$ are parameters to be estimated; $\prescript{0}{}\gamma_{s} \dots \prescript{2}{}\gamma_s$ and $\gamma_p$ follow a zero-centered Gaussian distribution with unknown variances $\prescript{0}{}\sigma^2_s \dots \prescript{2}{}\sigma^2_s$ and $\sigma^2_p$. $\text{Tr}_s$ is the average trait value for species $s$.
 
@@ -51,11 +50,11 @@ We tested different hypotheses through the $\delta$ term in~\autoref{eq:growth_m
 \begin{equation}
 \label{eq:delta}
 \delta = \left\{
-	\begin{array}{llr}
-		\prescript{4}{}\theta\times \text{Tr}_s & & \text{Species Average Model} \\
-		\prescript{4}{}\theta \times \text{Tr}_s & + \prescript{5}{}\theta \times(\text{Tr}_i - \text{Tr}_s) & \text{Hierarchical Distance Model} \\
-		\prescript{4}{}\theta \times \text{Tr}_s & + \prescript{5}{}\theta' \times \vert \text{Tr}_i - \text{Tr}_s \vert & \text{Absolute Distance Model} \\
-		\prescript{4}{}\theta' \times \text{Tr}_i & & \text{Individual Trait Model} \\
+	\begin{array}{lll}
+		\prescript{4}{}\theta\times \text{Tr}_s & \text{Species Average} &  \\
+		\prescript{4}{}\theta \times \text{Tr}_s & + \prescript{5}{}\theta \times(\text{Tr}_i - \text{Tr}_s) & \text{Hierarchical Dist.} \\
+		\prescript{4}{}\theta \times \text{Tr}_s & + \prescript{5}{}\theta' \times \vert \text{Tr}_i - \text{Tr}_s \vert & \text{Absolute Dist.} \\
+		\prescript{4}{}\theta' \times \text{Tr}_i & \text{Individual Trait} & \\
 	\end{array}
 \right.
 \end{equation}
@@ -71,7 +70,7 @@ Intra-specific variability and inter-specific variaibilty may have different imp
 
 All data analyses were made using \texttt{R} \citep{R_language} version 3.2.0 (2015-04-16), plots were made with \texttt{ggplot2} \citep{ggplot2_pkg}. We fit mixed-models with \texttt{lme4} \texttt{R} package \citep{lme4_pkg} 1.1-7 and computed adapted R-squared for mixed-models \citep{nakagawa_general_2013} implemented in \texttt{MuMIn} \texttt{R} package \citep{mumin_pkg} version 1.13.4.
 
-\begin{table}
+\begin{table*}
 	\begin{center}
 		\begin{tabular}{lccc}
 		\hline
@@ -87,4 +86,4 @@ All data analyses were made using \texttt{R} \citep{R_language} version 3.2.0 (2
 		\caption{\textbf{Selected functional traits.} Stem and Leaf Economics Spectrum are defined as in~\citep{baraloto_decoupled_2010}, the two axes unravel distinct ecological strategies. Leaf economics spectrum contrasts} 
 		\label{tab:seltraits}
 	\end{center}
-\end{table}
+\end{table*}

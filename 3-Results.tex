@@ -10,8 +10,7 @@ For all traits models with distance measures were better than model with only sp
 For bark thickness the absolute distance model improved the conditional R-squared by 0.025 compared to the model with only species average trait. For wood density hierarchical distance model improved the R-squared by 0.056 (10\% of total $\text{R}^2$) compared to species average model. While for SLA hierarchical distance model only increased $\text{R}^2$ by 0.004. For laminar chlorophyll and toughness the hierarchical distance models gained 0.001 of R-squared compared to the species average term models.
 
 Using the best models (in bold in~\autoref{tab:growth_mod}) that included a distance term we predicted AGR for a range of individual trait values and species average values. To underline the interplay between intra- and inter-specific variabilities we plotted the centered species average trait value vs. the hierarchical distance of indivdual's (see~\autoref{fig:simul}). We obtained AGR "landscapes", that show the pattern of variations of variation as a function of individual and species trait variation. Depending on the trait we had different patterns, for SLA and wood density we had similar patterns: the larger the species average trait value, the lower the AGR, and the higher the individual hierarchical distance the lower the AGR. For example, an increase of $10\text{cm}^2.\text{g}^{-1}$ in SLA species average decreases the growth by $0.035\text{mm}.\text{yr}^{-1}$ while the same increase in hierarchical distance decreases the AGR by $0.02\text{mm}.\text{yr}^{-1}$. For laminar chlorophyll content we observe that increasing species average as well as increasing hierarchical distance lead to increasing AGR. While for leaf toughness, species average and hierarchical AGR gradients are opposed: an increase in species average decreases AGR, and an increase individual hierarchical distance increases AGR. Because the best model for bark thickness was an absolute distance model, we observe the symmetrical patterns of AGR variations for change in hierarchical distance: globally, the higher the hierarchical distance the lower the AGR, while the higher the species average, the lower the growth.
-
-\begin{table}[!pt]
+\begin{table*}[!pt]
 	\begin{center}
 		\begin{tabular}{llcccc}
 		  \hline
@@ -48,12 +47,11 @@ Using the best models (in bold in~\autoref{tab:growth_mod}) that included a dist
 		             & Individual Trait & 0.138 & 0.528 & -1766 & 899 \\ 
 		   \hline
 		\end{tabular}
-		\caption{\textbf{Summary table of tested trait-specific growth models.} We modeled radial growth using linear-mixed model, all models contained plot and species random effects, as well as DBH and $\log\text{DBH}$ terms to take growth curve shape into account~\citep{herault_functional_2011}. Then, for each trait, we added a fixed effect that contained different terms: \textbf{Species Avg.}, only the species average trait value; \textbf{Hierarchical Distance}, the species average plus the difference between individual trait and species average; \textbf{Absolute Distance}, the species average plus the absolute difference between individual trait and species average; \textbf{Individual Trait}, only the trait value of individuals. Models indicated in \textbf{bold} are those with the highest logarithmic likelihood per trait.}
+		\caption{\textbf{Summary table of tested trait-specific growth models.} We modeled radial growth using linear-mixed model, all models contained plot and species random effects, as well as DBH and $\log\text{DBH}$ terms to take growth curve shape into account~\citep{herault_functional_2011}. Then, for each trait, we added a fixed effect that contained different terms: \textbf{Species Avg.}, only the species average trait value; \textbf{Hierarchical Distance}, the species average plus the difference between individual trait and species average; \textbf{Absolute Distance}, the species average plus the absolute difference between individual trait and species average; \textbf{Individual Trait}, only the trait value of individuals. Models indicated in \textbf{bold} are those with the highest logarithmic likelihood per trait. Not all traits had been measured on each tree, giving a different number of comprised tree for each model, thus the likelihood of models for each trait are not comparable.}
 		\label{tab:growth_mod}
 	\end{center}
-\end{table}
-
-\begin{figure}[!tb]
+\end{table*}
+\begin{figure*}[!tb]
 	\centering
 	\begin{subfigure}[c]{0.45\textwidth}
 		\includegraphics[scale=0.75]{figures/Plots_Map_2015-05-26.pdf}
@@ -67,11 +65,11 @@ Using the best models (in bold in~\autoref{tab:growth_mod}) that included a dist
 	\end{subfigure}
 	\caption{\textbf{(a) Plots map.} 9 1-ha plots were used, spread in French Guiana, two plots were surveyed both in Nouragues and in Paracou (see~\citealp{baraloto_decoupled_2010}) \textbf{(b) Explained variance by species effect in ANOVAs.} Dot-plot of explained variance in ANOVA by the species effect for traits and AGR. \textbf{Chloro. Content}: Laminar Chlorophyll Content, \textbf{AGR}: Annual Growth Rate (in diameter).}
 	\label{fig:gen}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[!ptb]
+\begin{figure*}[!ptb]
 	\centering
 	\includegraphics{figures/Sel_Traits_Simul_AGR_2015-05-30.pdf}
 	\caption{\textbf{Predictions of AGR depending on intra-specific and inter-specific variabilities in traits.} Surface plots of predicted AGR of simulated range of data: X-axis, centered species average trait (species average trait minus mean of all species average trait); Y-axis, individual distance to species average trait. Black lines are equal-AGR lines over the surface, i.e. on those line each point has the same AGR value, each line mark a $5e^{-3}\text{mm}.\text{yr}^{-1}$ break. For details on traits see~\autoref{tab:seltraits}.}
 	\label{fig:simul}
-\end{figure}
+\end{figure*}
